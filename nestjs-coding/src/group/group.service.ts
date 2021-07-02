@@ -32,7 +32,7 @@ export class GroupService {
 
   async updateGroup(group: Group): Promise<Group> {
     const result = await this.pgService.runQuery(
-      `update 'group' set group_name=${group.group_name} where group_id='${group.group_id}'`,
+      `update "group" set group_name='${group.group_name}' where group_id='${group.group_id}'`,
     );
 
     return result['rows'];
