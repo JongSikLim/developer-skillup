@@ -7,22 +7,7 @@ export class User {
   tel: string;
 }
 
-@Controller('user')
+@Controller('app')
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  @Get('list')
-  getHello(): Promise<User[]> {
-    return this.appService.getUserList();
-  }
-
-  @Post('add')
-  async insertHello(@Body() body: User) {
-    return await this.appService.insertUser(body);
-  }
-
-  @Put('update')
-  async updateUser(@Body() body: User) {
-    return await this.appService.updateUser(body);
-  }
 }
