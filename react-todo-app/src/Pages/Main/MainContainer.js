@@ -6,6 +6,9 @@ export default class MainContainer extends Component {
     todos: [],
   };
 
+  /**
+   * @title 투두 아이템 추가 처라
+   */
   handleAddTodo = () => {
     const newTodo = {
       id: v1(),
@@ -14,9 +17,14 @@ export default class MainContainer extends Component {
       active: false,
     };
 
-    this.setState((this.state.todos = [...this.state.todos, newTodo]));
+    this.setState({
+      todos : [...this.state.todos, newTodo]
+    });
   };
 
+  /**
+   * @title 투두 아이템 변경 처리
+   */
   handleChangeTodo = (id, value) => {
     let newTodos = [...this.state.todos];
     let targetIdx = newTodos.findIndex((todo) => todo.id === id);
@@ -26,6 +34,19 @@ export default class MainContainer extends Component {
       todos: newTodos,
     });
   };
+
+  /**
+   * @title 투두 아이템 삭제 처리
+  */
+  handleDeleteTodo = (id) => {
+    let newTodos = this.state.todos.filter(todo => {
+      return todo.id !== id;
+    })
+
+    this.setState({
+      todos: newTodos
+    })
+  }
 
   // handleActive = (id, active) => {
   //   let newTodos = this.state.todos.map((todo) => {
@@ -47,6 +68,7 @@ export default class MainContainer extends Component {
         todos={this.state.todos}
         handleAddTodo={this.handleAddTodo}
         handleChangeTodo={this.handleChangeTodo}
+        handleDeleteTodo={this.handleDeleteTodo}
       />
     );
   }

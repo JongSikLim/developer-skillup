@@ -1,21 +1,22 @@
 import React, { PureComponent } from 'react';
 import { TodoItem } from './components';
 import moment from 'moment';
-import { Button, Progress } from 'antd';
+import { Button, Progress, Divider, Typography } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 import './Main.scss';
+
+const { Title, Text } = Typography;
 
 export default class MainPresenter extends PureComponent {
   state = {
     today: moment(),
   };
 
-  render() {
-    console.log('this.props.todos: ', this.props.todos);
+  render() {    
     const todoElementList = this.props.todos.map((todo) => {
       return (
-        <TodoItem todo={todo} handleChangeTodo={this.props.handleChangeTodo} />
+        <TodoItem key={todo.id} todo={todo} handleChangeTodo={this.props.handleChangeTodo} handleDeleteTodo={this.props.handleDeleteTodo} />
       );
     });
 
@@ -31,21 +32,29 @@ export default class MainPresenter extends PureComponent {
           <div className="todo-card-container">
             <div className="todo-card-header">
               <div className="date-text">
-                {this.state.today.format('YYYY년 MM월 DD일')}
+                <Title level={2} >
+                  {this.state.today.format('YYYY년 MM월 DD일')}
+                </Title>                
               </div>
-              <div className="day-of-week-text">
-                {this.state.today.format('dddd')}
+              <div className="day-of-week-text" style={{marginBottom: 15}}>                
+                <Text type={'secondary'}>{this.state.today.format('dddd')}</Text>
               </div>
               <div className="progress-bar-area">
-                <Progress percent={progress} />
+                <Progress strokeColor={{
+                  '0%': '#108ee9',
+                  '100%': '#87d068',
+                }} percent={ isNaN(progress)  ? 100 : progress} />
               </div>
             </div>
+            <Divider />
             <div className="todo-card-content">{todoElementList}</div>
             <div className="todo-card-interface">
               <Button
-                shape="circle"
+                type='primary'
+                shape="circle"                
                 icon={<PlusOutlined />}
                 onClick={this.props.handleAddTodo}
+                size='large'
               />
             </div>
           </div>

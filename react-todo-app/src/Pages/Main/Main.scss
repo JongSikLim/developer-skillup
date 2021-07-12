@@ -1,4 +1,58 @@
 .main-container {
-  text-align: center;
   width: 800px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 60px;
+
+  position: relative;
+
+  .main-box{
+    .todo-card-container{
+      .todo-card-header{
+    
+      }
+
+      .todo-card-content{
+        
+        //todo item 속성
+
+        .todo-item-box{
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+          padding: 10px 5px;
+
+          .todo-content{
+            width: 100%;
+            margin-left: 10px;            
+            font-size: 18px;
+            
+
+            .todo-input-text-field{              
+            }
+
+            &:hover{
+              // border: 1px solid rgb(240, 245, 255);
+              // border-radius: 8px;
+              background-color: rgba(240, 245, 255, 0.6);
+            }
+          }
+
+          .delete-icon{
+            margin-left: 5px;
+          }
+        }
+      }
+
+      .todo-card-interface{
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+
+        transform: translateX(-50%) translateY(50%);
+
+      }
+    }
+
+  }
 }
