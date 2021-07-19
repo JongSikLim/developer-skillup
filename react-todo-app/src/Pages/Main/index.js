@@ -1,1 +1,2 @@
-export { default as Main } from './MainContainer';
+import Main from "./MainContainer";
+export default Main;
