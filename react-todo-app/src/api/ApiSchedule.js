@@ -18,7 +18,7 @@ const scheduleController = {
     },
     updateSchedule: async (id, body) => {
         const url = URL.UPDATE_SCHEDULE.replace(":schedule_id", id);
-        const result = await apiManager.put(url, body);
+        const result = await apiManager.patch(url, body);
 
         return returnResult(result);
     },

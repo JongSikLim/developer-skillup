@@ -62,6 +62,17 @@ export const apiManager = {
 
         return responseJson;
     },
+    patch: async (url, body) => {
+        const bodyString = JSON.stringify(body);
+        const response = await fetch(`${url}`, {
+            method: "PATCH",
+            headers,
+            body: bodyString,
+        });
+        const responseJson = await response.json();
+
+        return responseJson;
+    },
     delete: async (url, params) => {
         const queryString = jsonToQueryString(params);
         const response = await fetch(`${url}${queryString}`, {

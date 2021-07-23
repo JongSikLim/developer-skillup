@@ -18,7 +18,7 @@ export default class MainContainer extends Component {
             schedule_title: "할 일",
             schedule_description: null,
             schedule_location: null,
-            attendance_count: null,
+            attendance_count: 0,
             begin_time: null,
             end_time: null,
             isDone: false,
