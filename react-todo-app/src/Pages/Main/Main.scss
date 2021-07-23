@@ -1,58 +1,67 @@
 .main-container {
-  width: 800px;
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 60px;
+    width: 800px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 60px;
 
-  position: relative;
+    position: relative;
 
-  .main-box{
-    .todo-card-container{
-      .todo-card-header{
-    
-      }
+    .main-box {
+        .todo-card-container {
+            .todo-card-header {
+                .swipe-icon {
+                    float: right;
+                    .btn-arrow {
+                        margin-right: 5px;
 
-      .todo-card-content{
-        
-        //todo item 속성
-
-        .todo-item-box{
-          display: flex;
-          align-items: center;
-          margin-bottom: 5px;
-          padding: 10px 5px;
-
-          .todo-content{
-            width: 100%;
-            margin-left: 10px;            
-            font-size: 18px;
-            
-
-            .todo-input-text-field{              
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
             }
 
-            &:hover{
-              // border: 1px solid rgb(240, 245, 255);
-              // border-radius: 8px;
-              background-color: rgba(240, 245, 255, 0.6);
-            }
-          }
+            .todo-card-content {
+                //todo item 속성
+                height: 320px;
+                overflow-y: overlay;
 
-          .delete-icon{
-            margin-left: 5px;
-          }
+                .todo-item-box {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 5px;
+                    padding: 10px 5px;
+                    padding-right: 25px;
+
+                    .todo-content {
+                        width: 100%;
+                        margin-left: 10px;
+                        font-size: 18px;
+
+                        .todo-input-text-field {
+                        }
+
+                        &:hover {
+                            // border: 1px solid rgb(240, 245, 255);
+                            // border-radius: 8px;
+                            background-color: rgba(240, 245, 255, 0.6);
+                        }
+                    }
+
+                    .delete-icon {
+                        margin-left: 5px;
+                    }
+                }
+            }
+
+            .todo-card-interface {
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+
+                transform: translateX(-50%) translateY(50%);
+            }
         }
-      }
-
-      .todo-card-interface{
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-
-        transform: translateX(-50%) translateY(50%);
-
-      }
     }
-
-  }
 }

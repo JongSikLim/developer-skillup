@@ -5,8 +5,8 @@
 const headers = {
     "Content-Type": "application/json;charset=UTF-8",
     Accept: "application/json",
-    // mode: "no-cors",
     // "Access-Control-Allow-Origin": "*",
+    // mode: "no-cors",
     // Authorization: "",
 };
 

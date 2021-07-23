@@ -37,7 +37,7 @@ export default class TodoItem extends Component {
     render() {
         const { schedule } = this.props;
         const { active, schedule_title } = this.state;
-        const { schedule_id, isDone } = schedule;
+        const { schedule_id, is_done } = schedule;
 
         /**
          *  attendance_count: 10
@@ -56,9 +56,11 @@ export default class TodoItem extends Component {
             <>
                 <div className="todo-item-box" key={schedule_id}>
                     <Checkbox
-                        checked={isDone}
+                        checked={is_done}
                         onChange={(e) => {
-                            this.onChangeSchedule({ isDone: e.target.checked });
+                            this.onChangeSchedule({
+                                is_done: e.target.checked,
+                            });
                         }}
                     />
                     <div className="todo-content">
@@ -88,14 +90,14 @@ export default class TodoItem extends Component {
                         )}
 
                         {/*  완료된 todo content */}
-                        {!active && schedule.isDone && (
+                        {!active && schedule.is_done && (
                             <Text delete disabled>
                                 {schedule_title}
                             </Text>
                         )}
 
                         {/*  진행중인 todo content */}
-                        {!active && !schedule.isDone && (
+                        {!active && !schedule.is_done && (
                             <Text
                                 style={{ display: "block" }}
                                 onClick={() => {

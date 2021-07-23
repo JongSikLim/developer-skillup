@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { ScheduleItem } from "./components";
 import moment from "moment";
 import { Button, Progress, Divider, Typography } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { LeftOutlined, PlusOutlined, RightOutlined } from "@ant-design/icons";
 
 import "./Main.scss";
 
@@ -17,9 +17,15 @@ export default class MainPresenter extends PureComponent {
     /* Render */
     render() {
         /* Props & State */
-        const { schedules, handleAddTodo, handleChangeTodo, handleDeleteTodo } =
-            this.props;
-        const { today } = this.state;
+        const {
+            schedules,
+            handleAddTodo,
+            handleChangeTodo,
+            handleDeleteTodo,
+            handleClickPrevDate,
+            handleClickNextDate,
+        } = this.props;
+        const { date } = this.props;
 
         /* Variables */
         const scheduleElementList = schedules.map((schedule, index) => {
@@ -46,17 +52,34 @@ export default class MainPresenter extends PureComponent {
                 <div className="main-box">
                     <div className="todo-card-container">
                         <div className="todo-card-header">
+                            <div className="swipe-icon">
+                                <Button
+                                    className="btn-arrow"
+                                    shape="circle"
+                                    type="primary"
+                                    icon={<LeftOutlined />}
+                                    onClick={handleClickPrevDate}
+                                />
+                                <Button
+                                    className="btn-arrow"
+                                    shape="circle"
+                                    type="primary"
+                                    icon={<RightOutlined />}
+                                    onClick={handleClickNextDate}
+                                />
+                            </div>
                             <div className="date-text">
                                 <Title level={2}>
-                                    {today.format("YYYY년 MM월 DD일")}
+                                    {date.format("YYYY년 MM월 DD일")}
                                 </Title>
                             </div>
+
                             <div
                                 className="day-of-week-text"
                                 style={{ marginBottom: 15 }}
                             >
                                 <Text type={"secondary"}>
-                                    {today.format("dddd")}
+                                    {date.format("dddd")}
                                 </Text>
                             </div>
                             <div className="progress-bar-area">

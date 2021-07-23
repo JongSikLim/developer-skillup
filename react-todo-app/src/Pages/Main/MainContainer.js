@@ -1,10 +1,11 @@
 import { ApiCalendar, ApiSchedule } from "api";
+import moment from "moment";
 import React, { Component } from "react";
 import { v1 } from "uuid";
 import MainPresenter from "./MainPresenter";
 export default class MainContainer extends Component {
     state = {
-        date: null,
+        date: moment(),
         schedules: [],
         calendars: [],
     };
@@ -21,7 +22,7 @@ export default class MainContainer extends Component {
             attendance_count: 0,
             begin_time: null,
             end_time: null,
-            isDone: false,
+            is_done: false,
             calendar_id: 1,
             active: false,
         };
@@ -76,6 +77,30 @@ export default class MainContainer extends Component {
     };
 
     /**
+     * @title 이전 날짜로 이동
+     */
+    handleClickPrevDate = () => {
+        let cloneDate = this.state.date.clone();
+        cloneDate.add(-1, "days");
+
+        this.setState({
+            date: cloneDate,
+        });
+    };
+
+    /**
+     * @title 이후 날짜로 이동
+     */
+    handleClickNextDate = () => {
+        let cloneDate = this.state.date.clone();
+        cloneDate.add(1, "days");
+
+        this.setState({
+            date: cloneDate,
+        });
+    };
+
+    /**
      * @title 달력 정보 조회
      */
     getCalendarList = () => {
@@ -103,14 +128,17 @@ export default class MainContainer extends Component {
     }
 
     render() {
-        const { schedules } = this.state;
+        const { date, schedules } = this.state;
 
         return (
             <MainPresenter
+                date={date}
                 schedules={schedules}
                 handleAddTodo={this.handleAddTodo}
                 handleDeleteTodo={this.handleDeleteTodo}
                 handleChangeTodo={this.handleChangeTodo}
+                handleClickPrevDate={this.handleClickPrevDate}
+                handleClickNextDate={this.handleClickNextDate}
             />
         );
     }

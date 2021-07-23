@@ -10,7 +10,7 @@ const calendarApiList = {
 const scheduleApiList = {
     GET_SCHEDULE_LIST: `${HOST_URL}/schedule`,
     INSERT_SCHEDULE: `${HOST_URL}/schedule`,
-    UPDATE_SCHEDULE: `${HOST_URL}/schedule/:schedule_id`,
+    UPDATE_SCHEDULE: `${HOST_URL}/schedule`,
     DELETE_SCHEDULE: `${HOST_URL}/schedule/:schedule_id`,
 };
 
