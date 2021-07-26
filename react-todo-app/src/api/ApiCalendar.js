@@ -8,7 +8,6 @@ const { returnResult } = apiManager;
 const calendarController = {
     getCalendarList: async () => {
         const url = GET_CALENDAR_LIST;
-        console.log("GET_CALENDAR_LIST: ", GET_CALENDAR_LIST);
         const result = await apiManager.get(url);
 
         return returnResult(result);
@@ -16,6 +15,18 @@ const calendarController = {
     insertCalendar: async (body) => {
         const url = INSERT_CALENDAR;
         const result = await apiManager.post(url, body);
+
+        return returnResult(result);
+    },
+    updateCalendar: async (body) => {
+        const url = UPDATE_CALENDAR;
+        const result = await apiManager.put(url, body);
+
+        return returnResult(result);
+    },
+    deleteCalendar: async (calendar_id) => {
+        const url = DELETE_CALENDAR.replace(":calendar_id", calendar_id);
+        const result = await apiManager.delete(url);
 
         return returnResult(result);
     },

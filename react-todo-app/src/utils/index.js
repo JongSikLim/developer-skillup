@@ -86,13 +86,15 @@ export const apiManager = {
     returnResult: async (response) => {
         const { resultCode, resultMsg, resultData } = response;
 
-        if (resultCode === 200) {
-            return resultData;
-        } else {
-            return {
-                resultData,
-                resultMsg,
-            };
-        }
+        return new Promise((resolve, reject) => {
+            if ([200, 201, 203, 205].includes(resultCode)) {
+                resolve(resultData);
+            } else {
+                reject({
+                    resultCode,
+                    resultMsg,
+                });
+            }
+        });
     },
 };
